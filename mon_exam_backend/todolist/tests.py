@@ -92,7 +92,6 @@ def test_description_is_missing(api_client, user, create_category):
     # Vérifie qu'aucune tâche n'a été créée dans la base de données après l'échec de la validation.
     assert Task.objects.count() == 0
 
-@pytest.mark.xfail(reason="Authentification non implémentée dans le projet : l'API est publique.")
 def test_error_when_user_is_not_authenticated(api_client, create_category):
     """Vérifie que l'API renvoie une erreur lorsque l'utilisateur n'est pas authentifié."""
    
