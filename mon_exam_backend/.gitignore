@@ -1,0 +1,10 @@
+# Environnement virtuel
+env/
+
+# Fichiers de cache Python
+__pycache__/
+*.pyc
+db.sqlite3
+
+# macOS
+.DS_Store
