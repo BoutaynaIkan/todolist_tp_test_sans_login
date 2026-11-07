@@ -42,7 +42,7 @@ jobs:
     # Ajoutée pour exécuter le linter avant les tests afin de vérifier la qualité du code
       - name: 5. Exécution du Linter avec flake8
         run: |
-          flake8 .
+          flake8 . --count --show-source --statistics
 
       - name: 6. Exécution des tests
         run: |
