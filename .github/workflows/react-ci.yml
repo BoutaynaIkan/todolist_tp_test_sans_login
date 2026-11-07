@@ -15,7 +15,7 @@ jobs:
         working-directory: mon-exam-frontend
     strategy:
       matrix:
-        node-version: [18.x, 20.x] # On peut tester sur plusieurs versions de Node
+        node-version: [20.x, 22.x] # On peut tester sur plusieurs versions de Node
 
     steps:
       - name: 1. Checkout du code
