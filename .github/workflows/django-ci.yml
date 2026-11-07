@@ -39,6 +39,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: 5. Exécution des tests
+      - name: 5. Exécution du Linter avec flake8
+        run: |
+          flake8 .
+
+      - name: 6. Exécution des tests
         run: |
           pytest 
