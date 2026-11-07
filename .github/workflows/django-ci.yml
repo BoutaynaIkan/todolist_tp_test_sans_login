@@ -41,4 +41,4 @@ jobs:
 
       - name: 5. Exécution des tests
         run: |
-          pytest --maxfail=1 --disable-warnings -q mon_exam_backend/tests/
+          pytest 
