@@ -10,12 +10,13 @@ jobs:
   test:
     name: Lancer les tests unitaires
     runs-on: ubuntu-latest
+    # ajoutée pour définir le répertoire de travail par défaut pour toutes les étapes de ce job
     defaults:
       run:
         working-directory: mon_exam_backend
     strategy:
       matrix:
-        python-version: ["3.14"] # On peut tester sur plusieurs versions ici
+        python-version: ["3.14"] # Modifiée : On peut tester sur plusieurs versions ici
 
     steps:
       - name: 1. Checkout du code
@@ -38,7 +39,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-
+    # Ajoutée pour exécuter le linter avant les tests afin de vérifier la qualité du code
       - name: 5. Exécution du Linter avec flake8
         run: |
           flake8 .
