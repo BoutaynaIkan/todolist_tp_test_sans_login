@@ -10,6 +10,9 @@ jobs:
   test:
     name: Lancer les tests unitaires
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mon_exam_backend
     strategy:
       matrix:
         python-version: ["3.11"] # On peut tester sur plusieurs versions ici
