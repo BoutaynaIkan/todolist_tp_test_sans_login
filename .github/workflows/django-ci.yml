@@ -15,7 +15,7 @@ jobs:
         working-directory: mon_exam_backend
     strategy:
       matrix:
-        python-version: ["3.11"] # On peut tester sur plusieurs versions ici
+        python-version: ["3.14"] # On peut tester sur plusieurs versions ici
 
     steps:
       - name: 1. Checkout du code

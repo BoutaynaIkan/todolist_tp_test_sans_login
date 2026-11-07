@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: mon_exam_frontend
+        working-directory: mon-exam-frontend
     strategy:
       matrix:
         node-version: [18.x, 20.x] # On peut tester sur plusieurs versions de Node
