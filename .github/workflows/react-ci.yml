@@ -1,0 +1,38 @@
+name: CI pour le projet React
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    name: Lancer les tests et le linting
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x] # On peut tester sur plusieurs versions de Node
+
+    steps:
+      - name: 1. Checkout du code
+        uses: actions/checkout@v4
+
+      - name: 2. Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: 3. Cache des dépendances npm
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: 4. Installation des dépendances
+        run: npm ci
+
+      - name: 5. Exécution des tests
+        run: npm test
