@@ -157,7 +157,7 @@ function App() {
       <div className="list-header">
         <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)} id='select-category' data-cy="todo-list-category-filter">
           <option value="" disabled>
-              Sélectionner une catégorie
+              Sélectionner une catégorie de fruits ou légumes
           </option>
           <option value="">Toutes les catégories</option>
           {categories.map((cat) => (
