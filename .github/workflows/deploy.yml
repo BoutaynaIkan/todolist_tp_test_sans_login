@@ -22,7 +22,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "24" # On spécifie une version LTS (Long Term Support)
+          node-version: "22" # On spécifie une version LTS (Long Term Support)
           cache: "npm" # Active le caching pour npm automatiquement
 
       # Étape 3 : Installer les dépendances
@@ -46,7 +46,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Le dossier à uploader, qui a été généré par 'npm run build'
-          path: "./build"
+          path: mon-exam-frontend/dist
 
   # --- NOTRE NOUVEAU JOB DE DÉPLOIEMENT ---
   deploy:
