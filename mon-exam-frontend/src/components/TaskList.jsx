@@ -8,7 +8,7 @@ function TaskList({ tasks, onDeleteTask, onCheckboxChange, onUpdateTask, categor
   return (
     <ul className="task-list" data-cy="todo-list">
       {tasks.map((task) => (
-        <TaskItem key={task.id} task={task} onDeleteTask={onDeleteTask} onCheckboxChange={onCheckboxChange} onUpdateTask={onUpdateTask} categories={categories} isUpdatingTask={isUpdatingTask} isDeletingTask={isDeletingTask} credentials={credentials} />
+        <TaskItem key={task.id} task={task} onDeleteTask={onDeleteTask} onCheckboxChange={onCheckboxChange} onUpdateTask={onUpdateTask} categories={categories} isUpdatingTask={isUpdatingTask} isDeletingTask={isDeletingTask} />
       ))}
     </ul>
   )

@@ -4,7 +4,6 @@ import AddCategory from './components/AddCategory'
 import AddTask from './components/AddTask'
 import TaskList from './components/TaskList'
 import { apiClient } from './api';
-import { Login } from './components/Login';
 
 // URL de l'API backend
 
@@ -33,7 +32,6 @@ function App() {
 
   // Récupère les catégories et les tâches depuis le backend au chargement du composant. Catch les erreurs de serveur et les affiche dans le composant.
   useEffect(() => {
-    if (!credentials) return;
     const fetchTasks = async () => {
       try {
         const [categoriesResponse, tasksResponse] = await Promise.all([
@@ -50,7 +48,7 @@ function App() {
       }
     };
     fetchTasks();
-  }, [credentials]);
+  }, []);
 
   // Gestion de l'ajout d'une nouvelle catégorie. Catch les erreurs de serveur et les affiche dans le composant AddCategory.
   const handleAddCategory = async (newCategory) => {
@@ -136,9 +134,6 @@ function App() {
     ? tasks.filter(task => task.category === Number(selectedCategory))
     : tasks;
 
-  if (!credentials) {
-    return <Login onLoginSuccess={(email, password) => setCredentials({ email, password })} />;
-  }
 
   if (isLoading) {
     return <p>Chargement des tâches...</p>;
@@ -170,7 +165,7 @@ function App() {
             ))}
         </select>
       </div>
-      <TaskList tasks={filteredTasks} onDeleteTask={handleDeleteTask} onCheckboxChange={handleCheckboxChange} onUpdateTask={handleUpdateTask} categories={categories} isUpdatingTask={isUpdatingTask} isDeletingTask={isDeletingTask} credentials={credentials} />
+      <TaskList tasks={filteredTasks} onDeleteTask={handleDeleteTask} onCheckboxChange={handleCheckboxChange} onUpdateTask={handleUpdateTask} categories={categories} isUpdatingTask={isUpdatingTask} isDeletingTask={isDeletingTask}/>
     </>
   )
 }
