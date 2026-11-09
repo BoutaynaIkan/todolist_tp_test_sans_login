@@ -148,7 +148,7 @@ function App() {
 
   return (
     <>
-      <h1>Ma To-Do List par Catégories</h1>
+      <h1>Ma To-Dooo List par Catégories</h1>
 
       <div className="form-container">
         <AddCategory onAddCategory={handleAddCategory} isLoading={isAddingCategory} />
