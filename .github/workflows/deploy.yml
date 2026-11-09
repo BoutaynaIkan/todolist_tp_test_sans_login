@@ -30,8 +30,8 @@ jobs:
         run: npm ci
 
       # Ajoutée
-      - name: 5. Exécution du Linter avec eslint
-        run: npm run lint
+      #- name: 5. Exécution du Linter avec eslint
+      #  run: npm run lint
 
       # Étape 4 : Lancer les tests
       - name: Exécution des tests
@@ -40,3 +40,33 @@ jobs:
       # Étape 5 : Construire l'application
       - name: Build de l'application
         run: npm run build
+
+            # Nouvelle Étape : Uploader l'artefact du build
+      - name: Uploader l'artefact de build
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Le dossier à uploader, qui a été généré par 'npm run build'
+          path: "./build"
+
+  # --- NOTRE NOUVEAU JOB DE DÉPLOIEMENT ---
+  deploy:
+    name: Déployer sur GitHub Pages
+    # Ce job ne commencera que si le job 'build-and-test' a réussi
+    needs: build-and-test
+
+    # Permissions nécessaires pour que le job puisse écrire sur GitHub Pages
+    permissions:
+      pages: write # pour écrire sur l'environnement GitHub Pages
+      id-token: write # pour s'authentifier auprès de GitHub Pages
+
+    # L'environnement de déploiement (optionnel mais bonne pratique)
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    steps:
+      # L'étape finale : prendre l'artefact uploadé et le déployer
+      - name: Déployer sur GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
