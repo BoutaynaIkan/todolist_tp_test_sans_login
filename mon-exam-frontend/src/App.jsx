@@ -148,7 +148,7 @@ function App() {
 
   return (
     <>
-      <h1>Ma To-Dooo List par Catégories</h1>
+      <h1>Ma To-Do List par Catégories</h1>
 
       <div className="form-container">
         <AddCategory onAddCategory={handleAddCategory} isLoading={isAddingCategory} />
@@ -157,7 +157,7 @@ function App() {
       <div className="list-header">
         <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)} id='select-category' data-cy="todo-list-category-filter">
           <option value="" disabled>
-              Sélectionner une catégorie de fruits ou légumes
+              Sélectionner une catégorie
           </option>
           <option value="">Toutes les catégories</option>
           {categories.map((cat) => (
