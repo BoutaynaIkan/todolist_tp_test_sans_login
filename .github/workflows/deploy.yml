@@ -1,0 +1,34 @@
+name: Déploiement de l'Application React sur GitHub Pages
+
+on:
+  push:
+    branches: [main] # On ne déploie que ce qui est sur la branche principale
+
+jobs:
+  build-and-test: # Le nom de notre premier job
+    name: Construire et Tester
+    runs-on: ubuntu-latest
+
+    steps:
+      # Étape 1 : Récupérer le code
+      - name: Checkout du code
+        uses: actions/checkout@v4
+
+      # Étape 2 : Mettre en place l'environnement Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20" # On spécifie une version LTS (Long Term Support)
+          cache: "npm" # Active le caching pour npm automatiquement
+
+      # Étape 3 : Installer les dépendances
+      - name: Installation des dépendances
+        run: npm ci
+
+      # Étape 4 : Lancer les tests
+      - name: Exécution des tests
+        run: npm test
+
+      # Étape 5 : Construire l'application
+      - name: Build de l'application
+        run: npm run build
