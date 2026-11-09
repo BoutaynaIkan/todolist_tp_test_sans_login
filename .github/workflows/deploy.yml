@@ -8,6 +8,7 @@ jobs:
   build-and-test: # Le nom de notre premier job
     name: Construire et Tester
     runs-on: ubuntu-latest
+    # Ajoutée 
     defaults:
       run:
         working-directory: mon-exam-frontend
@@ -27,6 +28,10 @@ jobs:
       # Étape 3 : Installer les dépendances
       - name: Installation des dépendances
         run: npm ci
+
+      # Ajoutée
+      - name: 5. Exécution du Linter avec eslint
+        run: npm run lint
 
       # Étape 4 : Lancer les tests
       - name: Exécution des tests
