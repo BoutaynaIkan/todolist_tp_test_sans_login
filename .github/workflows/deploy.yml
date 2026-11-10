@@ -24,6 +24,7 @@ jobs:
         with:
           node-version: "22" # On spécifie une version LTS (Long Term Support)
           cache: "npm" # Active le caching pour npm automatiquement
+          cache-dependency-path: mon-exam-frontend/package-lock.json
 
       # Étape 3 : Installer les dépendances
       - name: Installation des dépendances
